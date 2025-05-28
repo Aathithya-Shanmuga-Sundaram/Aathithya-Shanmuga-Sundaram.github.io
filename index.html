@@ -1,385 +1,1060 @@
-<html lang="en" >
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aathithya | Cybersecurity Portfolio</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-
-    /* Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Roboto Mono', monospace;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #e0e6f3;
-      min-height: 100vh;
-      line-height: 1.5;
-    }
-
-    nav {
-      background: rgba(20, 40, 60, 0.85);
-      padding: 1rem 3rem;
-      position: sticky;
-      top: 0;
-      display: flex;
-      justify-content: flex-end;
-      gap: 2rem;
-      font-weight: bold;
-      z-index: 100;
-    }
-    nav a {
-      color: #70c0f5;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #a8e1ff;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-    }
-
-    /* Hero */
-    .hero {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      margin-bottom: 3rem;
-    }
-    .hero-text {
-      flex: 1;
-    }
-    .hero-text h1 {
-      font-size: 3.5rem;
-      color: #70c0f5;
-      margin-bottom: 0.3rem;
-      text-align: left;
-    }
-    .hero-text p {
-      font-size: 1.2rem;
-      color: #b3c7e6;
-    }
-    .hero-photo {
-      width: 160px;
-      height: 160px;
-      background: #70c0f5;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #70c0f5aa;
-      flex-shrink: 0;
-      display: flex;           
-      justify-content: center; 
-      align-items: center;     
-
-  overflow: hidden;
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 3rem;
-    }
-    section h2 {
-      font-size: 2rem;
-      color: #70c0f5;
-      border-bottom: 2px solid #70c0f5;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 1.2rem;
-    }
-    .skill-card {
-      background: rgba(255 255 255 / 0.1);
-      border-radius: 12px;
-      padding: 1rem 1.2rem;
-      box-shadow: 0 0 15px #70c0f5aa;
-      display: flex;
-      flex-direction: column;
-    }
-    .skill-name {
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-    }
-    .skill-bar-bg {
-      height: 12px;
-      background: #203a43;
-      border-radius: 8px;
-      overflow: hidden;
-      position: relative;
-    }
-    .skill-bar-fill {
-      height: 12px;
-      background: #70c0f5;
-      width: 0%;
-      border-radius: 8px;
-      animation: fillBar 1.6s forwards;
-      animation-delay: var(--delay);
-    }
-    @keyframes fillBar {
-      to {
-        width: var(--width);
-      }
-    }
-
-    /* Education */
-    .education-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .edu-item {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      background: rgba(255 255 255 / 0.1);
-      border-radius: 14px;
-      padding: 1rem 1.5rem;
-      box-shadow: 0 0 15px #70c0f5aa;
-      transition: box-shadow 0.3s ease;
-    }
-    .edu-item:hover {
-      box-shadow: 0 0 30px #70c0f5ff;
-    }
-    .edu-logo {
-      width: 64px;
-      height: 64px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: none;
-      object-fit: contain;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      font-weight: 700;
-      color: #70c0f5;
-      font-size: 1.2rem;
-      user-select: none;
-    }
-    .edu-details {
-      flex: 1;
-      color: #c1d3ee;
-    }
-    .edu-name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.2rem;
-    }
-    .edu-degree {
-      font-size: 0.95rem;
-      margin-bottom: 0.15rem;
-    }
-    .edu-year {
-      font-size: 0.85rem;
-      color: #7b99bb;
-    }
-
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 1.5rem;
-    }
-    .project-card {
-      background: rgba(255 255 255 / 0.1);
-      border-radius: 14px;
-      padding: 1.5rem;
-      box-shadow: 0 0 20px #70c0f5aa;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 30px #70c0f5ff;
-    }
-    .project-card h3 {
-      margin-bottom: 0.7rem;
-      color: #a8d3ff;
-    }
-    .project-card p {
-      margin-bottom: 1rem;
-    }
-    .project-card a {
-      font-weight: 700;
-      color: #c7e3ff;
-      text-decoration: underline;
-    }
-    .project-card a:hover {
-      color: #e0f0ff;
-    }
-
-    /* Contact */
-    .contact-links {
-      display: flex;
-      gap: 2rem;
-      font-weight: 700;
-    }
-    .contact-links a {
-      color: #70c0f5;
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.3s ease;
-    }
-    .contact-links a:hover {
-      border-color: #a8e1ff;
-    }
-
-    /* Responsive */
-    @media (max-width: 700px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-      .hero-photo {
-        margin: 0 auto 1.5rem;
-      }
-      .contact-links {
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-      .edu-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .edu-logo {
-        margin-bottom: 0.5rem;
-      }
-    }
-  </style>
-</head>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aathithya Shanmuga Sundaram | Cybersecurity Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        :root {
+            --primary: #00ff8c;
+            --secondary: #0a192f;
+            --text: #e6f1ff;
+            --dark: #020c1b;
+            --accent: #64ffda;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background-color: var(--primary);
+        }
+        
+        .cyber-card {
+            background: rgba(10, 25, 47, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 140, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 140, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .cyber-card:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: rgba(230, 241, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 4px;
+            position: relative;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        
+        .animate-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .typing-effect::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .matrix-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .hexagon {
+            position: relative;
+            width: 100px;
+            height: 110px;
+            background-color: rgba(0, 255, 140, 0.05);
+            margin: 0 auto;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .hexagon:hover {
+            background-color: rgba(0, 255, 140, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .project-card:hover .project-title {
+            color: var(--primary);
+        }
+        
+        .avatar-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            position: relative;
+	    object-fit: cover; 
+        }
+        
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+	    object-fit: cover; 
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: var(--primary);
+            font-size: 5rem;
+        }
+        
+        .glitch-effect {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .glitch-effect::before,
+        .glitch-effect::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch-effect::before {
+            left: 2px;
+            text-shadow: -1px 0 var(--primary);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        
+        .glitch-effect::after {
+            left: -2px;
+            text-shadow: -1px 0 var(--accent);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0% { clip: rect(16px, 9999px, 94px, 0); }
+            20% { clip: rect(90px, 9999px, 44px, 0); }
+            40% { clip: rect(67px, 9999px, 24px, 0); }
+            60% { clip: rect(41px, 9999px, 91px, 0); }
+            80% { clip: rect(89px, 9999px, 73px, 0); }
+            100% { clip: rect(11px, 9999px, 31px, 0); }
+        }
+        
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 119px, 0); }
+            20% { clip: rect(76px, 9999px, 86px, 0); }
+            40% { clip: rect(25px, 9999px, 57px, 0); }
+            60% { clip: rect(56px, 9999px, 98px, 0); }
+            80% { clip: rect(17px, 9999px, 37px, 0); }
+            100% { clip: rect(29px, 9999px, 84px, 0); }
+        }
+        
+        .btn-cyber {
+            position: relative;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.75rem 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-cyber:hover {
+            color: var(--secondary);
+        }
+        
+        .btn-cyber:hover::before {
+            width: 100%;
+        }
+        
+        .education-timeline {
+            position: relative;
+        }
+        
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background-color: rgba(0, 255, 140, 0.3);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 20px;
+            background: rgba(10, 25, 47, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 30px;
+            transform: rotate(45deg);
+            background: rgba(10, 25, 47, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+        
+        .timeline-left {
+            margin-right: auto;
+        }
+        
+        .timeline-right {
+            margin-left: auto;
+        }
+        
+        .timeline-left .timeline-content::after {
+            right: -10px;
+            border-top: none;
+            border-left: none;
+        }
+        
+        .timeline-right .timeline-content::after {
+            left: -10px;
+            border-bottom: none;
+            border-right: none;
+        }
+        
+        .institute-logo {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .education-timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+            
+            .timeline-content::after {
+                left: -10px;
+                border-bottom: none;
+                border-right: none;
+            }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.relative{position:relative}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mr-2{margin-right:0.5rem}.mr-4{margin-right:1rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-6{height:1.5rem}.min-h-screen{min-height:100vh}.w-6{width:1.5rem}.w-full{width:100%}.max-w-lg{max-width:32rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-\[\#233554\]{--tw-border-opacity:1;border-color:rgb(35 53 84 / var(--tw-border-opacity, 1))}.bg-\[\#020c1b\]{--tw-bg-opacity:1;background-color:rgb(2 12 27 / var(--tw-bg-opacity, 1))}.bg-\[\#0a192f\]{--tw-bg-opacity:1;background-color:rgb(10 25 47 / var(--tw-bg-opacity, 1))}.bg-\[\#112240\]{--tw-bg-opacity:1;background-color:rgb(17 34 64 / var(--tw-bg-opacity, 1))}.bg-opacity-90{--tw-bg-opacity:0.9}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-2{padding-bottom:0.5rem}.pt-16{padding-top:4rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.text-\[\#00ff8c\]{--tw-text-opacity:1;color:rgb(0 255 140 / var(--tw-text-opacity, 1))}.text-\[\#64ffda\]{--tw-text-opacity:1;color:rgb(100 255 218 / var(--tw-text-opacity, 1))}.text-\[\#e6f1ff\]{--tw-text-opacity:1;color:rgb(230 241 255 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:text-\[\#00ff8c\]:hover{--tw-text-opacity:1;color:rgb(0 255 140 / var(--tw-text-opacity, 1))}.focus\:border-\[\#00ff8c\]:focus{--tw-border-opacity:1;border-color:rgb(0 255 140 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}@media (min-width: 768px){.md\:mb-0{margin-bottom:0px}.md\:mt-0{margin-top:0px}.md\:flex{display:flex}.md\:hidden{display:none}.md\:w-1\/2{width:50%}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-start{align-items:flex-start}.md\:text-right{text-align:right}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-6xl{font-size:3.75rem;line-height:1}}@media (min-width: 1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
 <body>
-  <nav>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-opacity-90 bg-[#0a192f] z-50 shadow-lg backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold code-font text-[#00ff8c]">
+                    <span class="text-[#e6f1ff]">&lt;</span>AS<span class="text-[#e6f1ff]">/&gt;</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">About</a>
+                    <a href="#skills" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Skills</a>
+                    <a href="#projects" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Projects</a>
+                    <a href="#education" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Education</a>
+                    <a href="#contact" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Contact</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-[#e6f1ff] focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                <a href="#home" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Home</a>
+                <a href="#about" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">About</a>
+                <a href="#skills" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Skills</a>
+                <a href="#projects" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Projects</a>
+                <a href="#education" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Education</a>
+                <a href="#contact" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-  <div class="container">
-    <section class="hero" id="hero">
-      <div class="hero-photo">
-          <img src="Me.jpg" alt="Aathithya Shanmuga Sundaram" />
-      </div>
-      <div class="hero-text">
-        <h1>Aathithya Shanmuga Sundaram</h1>
-        <p>Cybersecurity Student & Ethical Hacker</p>
-      </div>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative pt-16">
+        <div class="matrix-bg" id="matrix-canvas"><canvas width="1351" height="768"></canvas></div>
+        <div class="container mx-auto px-4 py-16">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 animate-in show" data-delay="200">
+                    <p class="text-[#00ff8c] mb-2 code-font">Hello, my name is</p>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 glitch-effect" data-text="Aathithya Shanmuga Sundaram">
+                        Aathithya Shanmuga Sundaram
+                    </h1>
+                    <h2 class="text-2xl md:text-4xl text-gray-300 mb-6 typing-effect" id="typing-text">Network Securit</h2>
+                    <p class="text-gray-400 mb-8 max-w-lg">
+                        I specialize in protecting digital assets and systems from cyber threats. 
+                        With expertise in vulnerability assessment, penetration testing, and security architecture.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="btn-cyber">Get In Touch</a>
+                        <a href="#projects" class="btn-cyber">View Projects</a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center mt-12 md:mt-0 animate-in show" data-delay="400">
+                    <div class="avatar-container">
+                        <div class="avatar-placeholder">
+                            <img src="Me.jpg" alt="Aathithya Shanmuga Sundaram" class="avatar-placeholder"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills & Tools</h2>
-      <div class="skills-grid">
-        <div class="skill-card" style="--delay: 0.2s; --width: 85%;">
-          <div class="skill-name">Google Dorks</div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill"></div>
-          </div>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[#020c1b]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-heading">About Me</h2>
+            
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-12 mt-12">
+                <div class="md:w-1/2 animate-in show">
+                    <p class="text-gray-300 mb-4">
+                        Hello! I'm Aathithya, a passionate cybersecurity professional dedicated to creating secure digital environments. 
+                        My journey in cybersecurity began with a fascination for how systems work and how they can be protected from malicious actors.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        I specialize in network security, penetration testing, and security architecture. My approach combines technical expertise with 
+                        strategic thinking to develop comprehensive security solutions that protect organizations from evolving cyber threats.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        When I'm not securing systems, I enjoy participating in CTF competitions, researching new security vulnerabilities, 
+                        and contributing to open-source security tools. I believe in continuous learning and staying ahead of emerging threats.
+                    </p>
+                    <p class="text-gray-300">
+                        My goal is to make the digital world safer through innovative security practices and by raising awareness about cybersecurity best practices.
+                    </p>
+                </div>
+                
+                <div class="md:w-1/2 animate-in show" data-delay="200">
+                    <div class="cyber-card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-[#00ff8c]">My Expertise</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-[#00ff8c] mr-2">▹</span>
+                                <span>Vulnerability Assessment &amp; Penetration Testing</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#00ff8c] mr-2">▹</span>
+                                <span>Bug Bounty Hunting</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#00ff8c] mr-2">▹</span>
+                                <span>Web Application Testing</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#00ff8c] mr-2">▹</span>
+                                <span>Network Security Architecture</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#00ff8c] mr-2">▹</span>
+                                <span>Security Awareness Training</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#00ff8c] mr-2">▹</span>
+                                <span>Security Incident Response</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="skill-card" style="--delay: 0.4s; --width: 80%;">
-          <div class="skill-name">curl</div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill"></div>
-          </div>
-        </div>
-        <div class="skill-card" style="--delay: 0.6s; --width: 75%;">
-          <div class="skill-name">WPScan</div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill"></div>
-          </div>
-        </div>
-        <div class="skill-card" style="--delay: 0.8s; --width: 70%;">
-          <div class="skill-name">Nikto</div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill"></div>
-          </div>
-        </div>
-        <div class="skill-card" style="--delay: 1s; --width: 70%;">
-          <div class="skill-name">OWASP ZAP</div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill"></div>
-          </div>
-        </div>
-        <div class="skill-card" style="--delay: 1.2s; --width: 65%;">
-          <div class="skill-name">securityheaders.com</div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill"></div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <div class="education-list">
-        <div class="edu-item">
-          <img src="srcas.png" alt="SRCAS Logo" class="edu-logo" />
-          <div class="edu-details">
-            <div class="edu-name">Sri Ramakrishna College of Arts & Science</div>
-            <div class="edu-degree">B.Sc. Computer Science (Cybersecurity)</div>
-            <div class="edu-year">2023 - Present</div>
-          </div>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-heading">Skills &amp; Expertise</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="animate-in show" data-delay="100">
+                    <h3 class="text-xl font-bold mb-6 text-[#00ff8c]">Technical Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Security Report Writing</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Penetration Testing</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Incident Response</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Reconnaissance (OSINT, Passive)</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Web Application Security</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-in show" data-delay="300">
+                    <h3 class="text-xl font-bold mb-6 text-[#00ff8c]">Tools &amp; Technologies</h3>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
+                            <div class="hexagon mb-3">
+                                <i class="fas fa-shield-alt text-2xl text-[#00ff8c]"></i>
+                            </div>
+                            <span>Wireshark</span>
+                        </div>
+                        
+                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
+                            <div class="hexagon mb-3">
+                                <i class="fas fa-bug text-2xl text-[#00ff8c]"></i>
+                            </div>
+                            <span>Metasploit</span>
+                        </div>
+                        
+                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
+                            <div class="hexagon mb-3">
+                                <i class="fas fa-lock text-2xl text-[#00ff8c]"></i>
+                            </div>
+                            <span>Nmap</span>
+                        </div>
+                        
+                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
+                            <div class="hexagon mb-3">
+                                <i class="fas fa-code text-2xl text-[#00ff8c]"></i>
+                            </div>
+                            <span>Nikto</span>
+                        </div>
+                        
+                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
+                            <div class="hexagon mb-3">
+                                <i class="fas fa-server text-2xl text-[#00ff8c]"></i>
+                            </div>
+                            <span>Manual Reconnaissance</span>
+                        </div>
+                        
+                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
+                            <div class="hexagon mb-3">
+                                <i class="fas fa-cloud text-2xl text-[#00ff8c]"></i>
+                            </div>
+                            <span>HTTP Headers Scan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 animate-in show" data-delay="500">
+                <h3 class="text-xl font-bold mb-6 text-[#00ff8c]">Sessions & Seminars</h3>
+                
+                <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="100">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 project-title">Understanding Cyber Threats</h3>
+                        <p class="text-gray-400 mb-4">
+                            Location: Sri Ramakrishna College of Arts & Science
+                        </p>
+                    </div>
+                </div>
+                    
+                    <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="100">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 project-title">Why Online Privacy is a Myth?</h3>
+                        <p class="text-gray-400 mb-4">
+                            Location: Sri Ramakrishna College of Arts & Science
+                        </p>
+                    </div>
+                </div>
+                    
+                    <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="100">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 project-title">Introduction & Importance of Cybersecurity</h3>
+                        <p class="text-gray-400 mb-4">
+                            Location: Sri Ramakrishna College of Arts & Science
+                        </p>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
-        <div class="edu-item">
-          <img src="MLM.png" alt="MLM Logo" class="edu-logo" />
-          <div class="edu-details">
-            <div class="edu-name">MotherLaand Matriculation higher Secondary School</div>
-            <div class="edu-degree">Higher Secondary Education</div>
-            <div class="edu-year">2022 - 2023</div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section id="projects">
-      <h2>Responsible Disclosures & Reports</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <h3>Public Exposure of Personally Identifiable Information</h3>
-          <p>Identified sensitive endpoint exposure risking student data.</p>
-          <p><a href="#" target="_blank">View Report</a></p>
-        </div>
-        <div class="project-card">
-          <h3>Private WordPress Site RCE</h3>
-          <p>Discovered high severity RCE vulnerability via outdated plugin.</p>
-          <p><a href="#" target="_blank">View Report</a></p>
-        </div>
-        <div class="project-card">
-          <h3>SQL Injection in Feedback System of Educational Institution</h3>
-          <p>Found missing security headers increasing injection risk.</p>
-          <p><a href="#" target="_blank">View Report</a></p>
-        </div>
-      </div>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-[#020c1b]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-heading">Responsible Disclosures</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="100">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <i class="fas fa-folder-open text-[#00ff8c] text-3xl"></i>
+                            </div>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 project-title">Public Exposure of Personally Identifiable Information</h3>
+                        <p class="text-gray-400 mb-4">
+                            Identified sensitive endpoint exposure risking Faculty & Student data.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Web Application Testing</span>
+                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Nmap</span>
+                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Network Security</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="300">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <i class="fas fa-folder-open text-[#00ff8c] text-3xl"></i>
+                            </div>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 project-title">Private WordPress Site RCE</h3>
+                        <p class="text-gray-400 mb-4">
+                            Discovered high severity RCE vulnerability via outdated plugin.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">cURL</span>
+                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Nikto</span>
+                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">WPScan</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <i class="fas fa-folder-open text-[#00ff8c] text-3xl"></i>
+                            </div>
+                            <div class="flex space-x-4">
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 project-title">SQL Injection in Feedback System of Educational Institution</h3>
+                        <p class="text-gray-400 mb-4">
+                            Found missing security headers increasing injection risk.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">SQLMap</span>
+                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Nmap</span>
+                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Input Manipulation</span>
+                        </div>
+                    </div>
+                </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <div class="contact-links">
-        <a href="mailto:aathithyaacharya@outlook.com">Email</a>
-        <a href="https://www.linkedin.com/in/aathithya-shanmuga-sundaram/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/Aathithya-Shanmuga-Sundaram" target="_blank">GitHub</a>
-      </div>
+    <!-- Education Section -->
+    <section id="education" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-heading">Education</h2>
+            
+            <div class="education-timeline mt-16 relative">
+                <div class="timeline-item mb-16 animate-in show" data-delay="100">
+                    <div class="timeline-content timeline-left">
+                        <div class="institute-logo">
+                            <img src="srcas.png" alt="SRCAS Logo" class="institute-logo"/>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#00ff8c]">Bachelor of Science in CS with Cybersecurity</h3>
+                        <p class="text-gray-400 mb-2">Sri Ramakrishna College of Arts & Science</p>
+                        <p class="text-sm mb-4">2023 - 2026</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item mb-16 animate-in show" data-delay="300">
+                    <div class="timeline-content timeline-right">
+                        <div class="institute-logo">
+                            <img src="MLM.png" alt="MLM Logo" class="institute-logo"/>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#00ff8c]">Higher Secondary Education</h3>
+                        <p class="text-gray-400 mb-2">MotherLaand Matriculation Higher Secondary School</p>
+                        <p class="text-sm mb-4">2022 - 2023</p>
+                    </div>
+                </div>  
+            </div>
+        </div>
     </section>
-  </div>
 
-  <script>
-    // Animate skill bars once page loads
-    window.addEventListener('load', () => {
-      const fills = document.querySelectorAll('.skill-bar-fill');
-      fills.forEach(fill => {
-        fill.style.width = getComputedStyle(fill.parentElement).getPropertyValue('--width');
-      });
-    });
-  </script>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#020c1b]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-heading">Get In Touch</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12 mt-12">
+                <div class="md:w-1/2 animate-in" data-delay="100">
+                    <p class="text-gray-300 mb-6">
+                        I'm currently open to new opportunities and collaborations in the cybersecurity field. 
+                        Whether you have a question, project idea, or just want to connect, feel free to reach out!
+                    </p>
+                    
+                    <div class="cyber-card p-6 mb-6">
+                        <h3 class="text-xl font-bold mb-4 text-[#00ff8c]">Contact Information</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-[#00ff8c] mr-4"></i>
+                                <span>aathithyaacharya@outlook.com</span>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-[#00ff8c] mr-4"></i>
+                                <span>Coimbatore, Tamil Nadu</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-6">
+                        <a href="https://linkedin.com/in/aathithya-shanmuga-sundaram" class="text-gray-400 hover:text-[#00ff8c] text-2xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/Aathithya-Shanmuga-Sundaram" class="text-gray-400 hover:text-[#00ff8c] text-2xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 animate-in" data-delay="300">
+                    <div class="cyber-card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-[#00ff8c]">Send Me a Message</h3>
+                        
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block mb-2 text-sm">Name</label>
+                                <input type="text" id="name" class="w-full bg-[#112240] border border-[#233554] rounded-md p-3 text-white focus:outline-none focus:border-[#00ff8c]" required="">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block mb-2 text-sm">Email</label>
+                                <input type="email" id="email" class="w-full bg-[#112240] border border-[#233554] rounded-md p-3 text-white focus:outline-none focus:border-[#00ff8c]" required="">
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block mb-2 text-sm">Subject</label>
+                                <input type="text" id="subject" class="w-full bg-[#112240] border border-[#233554] rounded-md p-3 text-white focus:outline-none focus:border-[#00ff8c]" required="">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block mb-2 text-sm">Message</label>
+                                <textarea id="message" rows="5" class="w-full bg-[#112240] border border-[#233554] rounded-md p-3 text-white focus:outline-none focus:border-[#00ff8c]" required=""></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-cyber w-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-[#0a192f] border-t border-[#233554]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#home" class="text-2xl font-bold code-font text-[#00ff8c]">
+                        <span class="text-[#e6f1ff]">&lt;</span>AS<span class="text-[#e6f1ff]">/&gt;</span>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400 text-sm">
+                        Designed &amp; Built by Aathithya Shanmuga Sundaram
+                    </p>
+                    <p class="text-gray-500 text-xs mt-1">
+                        © 2025 All Rights Reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Typing effect
+        const typingText = document.getElementById('typing-text');
+        const phrases = ['Cybersecurity Awareness Leader', 'Web Application Pen-Tester','Bug Bounty Hunter', 'Security Architect'];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+            
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 1500; // Pause at end of phrase
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 500; // Pause before typing next phrase
+            }
+            
+            setTimeout(typeEffect, typingSpeed);
+        }
+        
+        // Start typing effect
+        setTimeout(typeEffect, 1000);
+        
+        // Animate skill bars when in viewport
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width;
+            });
+        }
+        
+        // Intersection Observer for animations
+        const animateElements = document.querySelectorAll('.animate-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
+                    const delay = element.getAttribute('data-delay') || 0;
+                    
+                    setTimeout(() => {
+                        element.classList.add('show');
+                    }, delay);
+                    
+                    observer.unobserve(element);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Animate skill bars when skills section is in view
+        const skillsSection = document.getElementById('skills');
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    skillsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        skillsObserver.observe(skillsSection);
+        
+        // Matrix background effect
+        const canvas = document.querySelector('.matrix-bg canvas');
+        const ctx = canvas.getContext('2d');
+        const matrixBg = document.querySelector('.matrix-bg');
+        
+        matrixBg.appendChild(canvas);
+        
+        function resizeCanvas() {
+            canvas.width = matrixBg.offsetWidth;
+            canvas.height = matrixBg.offsetHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        const characters = '01'.split('');
+        const columns = Math.floor(canvas.width / 20);
+        const drops = [];
+        
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * -canvas.height);
+        }
+        
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(2, 12, 27, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff8c';
+            ctx.font = '15px monospace';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                ctx.fillText(text, i * 20, drops[i] * 20);
+                
+                if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrix, 33);
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, you would send the form data to a server
+            // For this demo, we'll just show a success message
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Clear the form
+            contactForm.reset();
+            
+            // Show success message
+            alert('Thank you for your message! I will get back to you soon.');
+        });
+    </script>
 </body>
 </html>
