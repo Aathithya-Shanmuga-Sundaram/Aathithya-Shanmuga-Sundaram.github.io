@@ -1,34 +1,84 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aathithya Shanmuga Sundaram | Cybersecurity Portfolio</title>
+    <title>Aathithya Shanmuga Sundaram</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#10b981',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
-        
-        :root {
-            --primary: #00ff8c;
-            --secondary: #0a192f;
-            --text: #e6f1ff;
-            --dark: #020c1b;
-            --accent: #64ffda;
+        .matrix-bg {
+            background-color: rgba(15, 23, 42, 0.97);
+            background-image: 
+                radial-gradient(rgba(14, 165, 233, 0.15) 2px, transparent 2px),
+                radial-gradient(rgba(16, 185, 129, 0.1) 2px, transparent 2px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
         }
         
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 5rem;
+        .glow {
+            text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
         }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--secondary);
-            color: var(--text);
-            overflow-x: hidden;
+        .terminal {
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 8px;
+            background-color: rgba(2, 6, 23, 0.8);
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
         }
         
-        .code-font {
-            font-family: 'JetBrains Mono', monospace;
+        .terminal-header {
+            background: linear-gradient(90deg, rgba(14, 165, 233, 0.2), rgba(16, 185, 129, 0.2));
+            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #0ea5e9;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #0ea5e9 }
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #0ea5e9, #10b981);
+            border-radius: 4px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+        }
+        
+        .disclosure-card:hover {
+            border-color: #0ea5e9;
         }
         
         .nav-link {
@@ -40,9 +90,9 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -4px;
+            bottom: -2px;
             left: 0;
-            background-color: var(--primary);
+            background: linear-gradient(90deg, #0ea5e9, #10b981);
             transition: width 0.3s ease;
         }
         
@@ -50,462 +100,150 @@
             width: 100%;
         }
         
-        .section-heading {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-        
-        .section-heading::after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 3px;
-            bottom: -10px;
-            left: 0;
-            background-color: var(--primary);
-        }
-        
-        .cyber-card {
-            background: rgba(10, 25, 47, 0.7);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cyber-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .active::after {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 140, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-        
-        .cyber-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 255, 140, 0.1);
-            border-color: var(--primary);
-        }
-        
-        .cyber-card:hover::before {
-            transform: translateX(100%);
-        }
-        
-        .skill-bar {
-            height: 8px;
-            background: rgba(230, 241, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 4px;
-            position: relative;
-            width: 0;
-            transition: width 1.5s ease;
-        }
-        
-        .animate-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .animate-in.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .typing-effect::after {
-            content: '|';
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        .matrix-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
         }
         
         .hexagon {
-            position: relative;
-            width: 100px;
-            height: 110px;
-            background-color: rgba(0, 255, 140, 0.05);
-            margin: 0 auto;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #0ea5e9, #10b981);
         }
         
-        .hexagon:hover {
-            background-color: rgba(0, 255, 140, 0.2);
-            transform: scale(1.05);
+        .scroll-indicator {
+            animation: bounce 2s infinite;
         }
         
-        .project-card {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-        
-        .project-card:hover .project-title {
-            color: var(--primary);
-        }
-        
-        .avatar-container {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--primary);
-            position: relative;
-	    object-fit: cover; 
-        }
-        
-        .avatar-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-	    object-fit: cover; 
-            background: linear-gradient(135deg, var(--dark), var(--secondary));
-            color: var(--primary);
-            font-size: 5rem;
-        }
-        
-        .glitch-effect {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .glitch-effect::before,
-        .glitch-effect::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .glitch-effect::before {
-            left: 2px;
-            text-shadow: -1px 0 var(--primary);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-        }
-        
-        .glitch-effect::after {
-            left: -2px;
-            text-shadow: -1px 0 var(--accent);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim2 5s infinite linear alternate-reverse;
-        }
-        
-        @keyframes glitch-anim {
-            0% { clip: rect(16px, 9999px, 94px, 0); }
-            20% { clip: rect(90px, 9999px, 44px, 0); }
-            40% { clip: rect(67px, 9999px, 24px, 0); }
-            60% { clip: rect(41px, 9999px, 91px, 0); }
-            80% { clip: rect(89px, 9999px, 73px, 0); }
-            100% { clip: rect(11px, 9999px, 31px, 0); }
-        }
-        
-        @keyframes glitch-anim2 {
-            0% { clip: rect(65px, 9999px, 119px, 0); }
-            20% { clip: rect(76px, 9999px, 86px, 0); }
-            40% { clip: rect(25px, 9999px, 57px, 0); }
-            60% { clip: rect(56px, 9999px, 98px, 0); }
-            80% { clip: rect(17px, 9999px, 37px, 0); }
-            100% { clip: rect(29px, 9999px, 84px, 0); }
-        }
-        
-        .btn-cyber {
-            position: relative;
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 0.75rem 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-        
-        .btn-cyber::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-            z-index: -1;
-        }
-        
-        .btn-cyber:hover {
-            color: var(--secondary);
-        }
-        
-        .btn-cyber:hover::before {
-            width: 100%;
-        }
-        
-        .education-timeline {
-            position: relative;
-        }
-        
-        .education-timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            height: 100%;
-            background-color: rgba(0, 255, 140, 0.3);
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item {
-            position: relative;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            left: 50%;
-            top: 30px;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-        
-        .timeline-content {
-            width: 45%;
-            padding: 20px;
-            background: rgba(10, 25, 47, 0.7);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            border-radius: 8px;
-            position: relative;
-        }
-        
-        .timeline-content::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 30px;
-            transform: rotate(45deg);
-            background: rgba(10, 25, 47, 0.7);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-        }
-        
-        .timeline-left {
-            margin-right: auto;
-        }
-        
-        .timeline-right {
-            margin-left: auto;
-        }
-        
-        .timeline-left .timeline-content::after {
-            right: -10px;
-            border-top: none;
-            border-left: none;
-        }
-        
-        .timeline-right .timeline-content::after {
-            left: -10px;
-            border-bottom: none;
-            border-right: none;
-        }
-        
-        .institute-logo {
-            width: 60px;
-            height: 60px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-        
-        @media (max-width: 768px) {
-            .education-timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-item::before {
-                left: 30px;
-            }
-            
-            .timeline-content {
-                width: calc(100% - 60px);
-                margin-left: 60px;
-            }
-            
-            .timeline-content::after {
-                left: -10px;
-                border-bottom: none;
-                border-right: none;
-            }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.relative{position:relative}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mr-2{margin-right:0.5rem}.mr-4{margin-right:1rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-6{height:1.5rem}.min-h-screen{min-height:100vh}.w-6{width:1.5rem}.w-full{width:100%}.max-w-lg{max-width:32rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-\[\#233554\]{--tw-border-opacity:1;border-color:rgb(35 53 84 / var(--tw-border-opacity, 1))}.bg-\[\#020c1b\]{--tw-bg-opacity:1;background-color:rgb(2 12 27 / var(--tw-bg-opacity, 1))}.bg-\[\#0a192f\]{--tw-bg-opacity:1;background-color:rgb(10 25 47 / var(--tw-bg-opacity, 1))}.bg-\[\#112240\]{--tw-bg-opacity:1;background-color:rgb(17 34 64 / var(--tw-bg-opacity, 1))}.bg-opacity-90{--tw-bg-opacity:0.9}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-2{padding-bottom:0.5rem}.pt-16{padding-top:4rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.text-\[\#00ff8c\]{--tw-text-opacity:1;color:rgb(0 255 140 / var(--tw-text-opacity, 1))}.text-\[\#64ffda\]{--tw-text-opacity:1;color:rgb(100 255 218 / var(--tw-text-opacity, 1))}.text-\[\#e6f1ff\]{--tw-text-opacity:1;color:rgb(230 241 255 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:text-\[\#00ff8c\]:hover{--tw-text-opacity:1;color:rgb(0 255 140 / var(--tw-text-opacity, 1))}.focus\:border-\[\#00ff8c\]:focus{--tw-border-opacity:1;border-color:rgb(0 255 140 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}@media (min-width: 768px){.md\:mb-0{margin-bottom:0px}.md\:mt-0{margin-top:0px}.md\:flex{display:flex}.md\:hidden{display:none}.md\:w-1\/2{width:50%}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-start{align-items:flex-start}.md\:text-right{text-align:right}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-6xl{font-size:3.75rem;line-height:1}}@media (min-width: 1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
-<body>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:"JetBrains Mono", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.bottom-10{bottom:2.5rem}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1{margin-left:0.25rem}.ml-4{margin-left:1rem}.mr-1{margin-right:0.25rem}.mr-2{margin-right:0.5rem}.mr-3{margin-right:0.75rem}.mr-4{margin-right:1rem}.mt-2{margin-top:0.5rem}.mt-8{margin-top:2rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-3{height:0.75rem}.h-4{height:1rem}.h-48{height:12rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-64{height:16rem}.h-8{height:2rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-16{width:4rem}.w-3{width:0.75rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-8{width:2rem}.w-full{width:100%}.max-w-3xl{max-width:48rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-md{border-radius:0.375rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-primary{--tw-border-opacity:1;border-color:rgb(14 165 233 / var(--tw-border-opacity, 1))}.border-primary\/20{border-color:rgb(14 165 233 / 0.2)}.border-primary\/30{border-color:rgb(14 165 233 / 0.3)}.bg-darker{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-dark{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-dark\/50{background-color:rgb(15 23 42 / 0.5)}.bg-darker\/50{background-color:rgb(2 6 23 / 0.5)}.bg-darker\/90{background-color:rgb(2 6 23 / 0.9)}.bg-darker\/95{background-color:rgb(2 6 23 / 0.95)}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(14 165 233 / var(--tw-bg-opacity, 1))}.bg-primary\/20{background-color:rgb(14 165 233 / 0.2)}.bg-red-500{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity, 1))}.bg-red-900\/30{background-color:rgb(127 29 29 / 0.3)}.bg-transparent{background-color:transparent}.bg-yellow-500{--tw-bg-opacity:1;background-color:rgb(234 179 8 / var(--tw-bg-opacity, 1))}.bg-yellow-900\/30{background-color:rgb(113 63 18 / 0.3)}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.from-primary\/20{--tw-gradient-from:rgb(14 165 233 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(14 165 233 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-dark\/90{--tw-gradient-to:rgb(15 23 42 / 0.9) var(--tw-gradient-to-position)}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pl-20{padding-left:5rem}.text-center{text-align:center}.font-sans{font-family:Inter, sans-serif}.font-mono{font-family:"JetBrains Mono", monospace}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.text-light{--tw-text-opacity:1;color:rgb(248 250 252 / var(--tw-text-opacity, 1))}.text-dark{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-light\/60{color:rgb(248 250 252 / 0.6)}.text-light\/70{color:rgb(248 250 252 / 0.7)}.text-primary{--tw-text-opacity:1;color:rgb(14 165 233 / var(--tw-text-opacity, 1))}.text-primary\/70{color:rgb(14 165 233 / 0.7)}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:transform:hover{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-primary\/10:hover{background-color:rgb(14 165 233 / 0.1)}.hover\:bg-primary\/80:hover{background-color:rgb(14 165 233 / 0.8)}.hover\:text-primary:hover{--tw-text-opacity:1;color:rgb(14 165 233 / var(--tw-text-opacity, 1))}.hover\:text-secondary:hover{--tw-text-opacity:1;color:rgb(16 185 129 / var(--tw-text-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-primary\/50:focus{--tw-ring-color:rgb(14 165 233 / 0.5)}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:mb-0{margin-bottom:0px}.md\:flex{display:flex}.md\:hidden{display:none}.md\:w-1\/3{width:33.333333%}.md\:w-2\/3{width:66.666667%}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:p-10{padding:2.5rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-6xl{font-size:3.75rem;line-height:1}}</style></head>
+<body class="bg-darker text-light font-sans">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-opacity-90 bg-[#0a192f] z-50 shadow-lg backdrop-blur-sm">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <a href="#home" class="text-2xl font-bold code-font text-[#00ff8c]">
-                    <span class="text-[#e6f1ff]">&lt;</span>AS<span class="text-[#e6f1ff]">/&gt;</span>
-                </a>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Home</a>
-                    <a href="#about" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">About</a>
-                    <a href="#skills" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Skills</a>
-                    <a href="#projects" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Projects</a>
-                    <a href="#education" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Education</a>
-                    <a href="#contact" class="nav-link text-[#e6f1ff] hover:text-[#00ff8c] transition-colors">Contact</a>
-                </div>
-                
-                <button id="mobile-menu-button" class="md:hidden text-[#e6f1ff] focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+    <nav class="fixed w-full bg-darker/90 backdrop-blur-sm z-50 border-b border-primary/20">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="hexagon w-10 h-10 mr-3"></div>
+                <span class="text-xl font-bold text-primary">&lt;</span><span class="text-xl font-bold text-primary">AS</span><span class="text-xl font-bold text-primary">/&gt;</span>
             </div>
-            
-            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
-                <a href="#home" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Home</a>
-                <a href="#about" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">About</a>
-                <a href="#skills" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Skills</a>
-                <a href="#projects" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Projects</a>
-                <a href="#education" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Education</a>
-                <a href="#contact" class="block py-2 text-[#e6f1ff] hover:text-[#00ff8c]">Contact</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-light hover:text-primary transition-colors active">Home</a>
+                <a href="#about" class="nav-link text-light hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="nav-link text-light hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" class="nav-link text-light hover:text-primary transition-colors">Projects</a>
+                <a href="#disclosures" class="nav-link text-light hover:text-primary transition-colors">Disclosures</a>
+                <a href="#sessions" class="nav-link text-light hover:text-primary transition-colors">Sessions</a>
+                <a href="#education" class="nav-link text-light hover:text-primary transition-colors">Education</a>
+                <a href="#contact" class="nav-link text-light hover:text-primary transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-darker/95 backdrop-blur-sm border-b border-primary/20">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="py-2 text-light hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="py-2 text-light hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="py-2 text-light hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" class="py-2 text-light hover:text-primary transition-colors">Projects</a>
+                <a href="#disclosures" class="py-2 text-light hover:text-primary transition-colors">Disclosures</a>
+                <a href="#sessions" class="py-2 text-light hover:text-primary transition-colors">Sessions</a>
+                <a href="#education" class="py-2 text-light hover:text-primary transition-colors">Education</a>
+                <a href="#contact" class="py-2 text-light hover:text-primary transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative pt-16">
-        <div class="matrix-bg" id="matrix-canvas"><canvas width="1351" height="768"></canvas></div>
-        <div class="container mx-auto px-4 py-16">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 animate-in show" data-delay="200">
-                    <p class="text-[#00ff8c] mb-2 code-font">Hello, my name is</p>
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 glitch-effect" data-text="Aathithya Shanmuga Sundaram">
-                        Aathithya Shanmuga Sundaram
+    <section id="home" class="min-h-screen matrix-bg flex items-center justify-center relative">
+        <div class="container mx-auto px-4 py-20 flex flex-col items-center text-center">
+            <div class="terminal w-full max-w-3xl">
+                <div class="terminal-header flex items-center p-3">
+                    <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div class="ml-4 text-xs text-light/70 font-mono">aathithya@cybersecurity:~</div>
+                </div>
+                <div class="p-6 md:p-10">
+                    <div class="font-mono text-sm text-primary mb-4">$ whoami</div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        <span class="text-light">Aathithya</span>
+                        <span class="text-primary glow">Shanmuga Sundaram</span>
                     </h1>
-                    <h2 class="text-2xl md:text-4xl text-gray-300 mb-6 typing-effect" id="typing-text">Network Securit</h2>
-                    <p class="text-gray-400 mb-8 max-w-lg">
-                        I specialize in protecting digital assets and systems from cyber threats. 
-                        With expertise in vulnerability assessment, penetration testing, and security architecture.
+                    <div class="font-mono text-sm text-primary mb-4">$ cat skills.txt</div>
+                    <p class="text-xl md:text-2xl mb-8 typing-animation inline-block">
+                        Securing digital assets. Finding vulnerabilities. Protecting data.
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="#contact" class="btn-cyber">Get In Touch</a>
-                        <a href="#projects" class="btn-cyber">View Projects</a>
+                    <div class="font-mono text-sm text-primary mb-4">$ ./explore_portfolio.sh</div>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="Aathithya_CV.pdf" download class="bg-primary hover:bg-primary/80 text-dark font-bold py-3 px-6 rounded-md transition-all">
+                            Download CV
+                        </a>
+                        <a href="#contact" class="bg-transparent border border-primary text-primary hover:bg-primary/10 font-bold py-3 px-6 rounded-md transition-all">
+                            Get In Touch
+                        </a>
                     </div>
                 </div>
-                
-                <div class="md:w-1/2 flex justify-center mt-12 md:mt-0 animate-in show" data-delay="400">
-                    <div class="avatar-container">
-                        <div class="avatar-placeholder">
-                            <img src="Me.jpg" alt="Aathithya Shanmuga Sundaram" class="avatar-placeholder"/>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 w-full flex justify-center">
+            <div class="scroll-indicator">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-[#020c1b]">
+    <section id="about" class="py-20 bg-dark">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold section-heading">About Me</h2>
-            
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-12 mt-12">
-                <div class="md:w-1/2 animate-in show">
-                    <p class="text-gray-300 mb-4">
-                        Hello! I'm Aathithya, a passionate cybersecurity professional dedicated to creating secure digital environments. 
-                        My journey in cybersecurity began with a fascination for how systems work and how they can be protected from malicious actors.
-                    </p>
-                    <p class="text-gray-300 mb-4">
-                        I specialize in network security, penetration testing, and security architecture. My approach combines technical expertise with 
-                        strategic thinking to develop comprehensive security solutions that protect organizations from evolving cyber threats.
-                    </p>
-                    <p class="text-gray-300 mb-4">
-                        When I'm not securing systems, I enjoy participating in CTF competitions, researching new security vulnerabilities, 
-                        and contributing to open-source security tools. I believe in continuous learning and staying ahead of emerging threats.
-                    </p>
-                    <p class="text-gray-300">
-                        My goal is to make the digital world safer through innovative security practices and by raising awareness about cybersecurity best practices.
-                    </p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-primary glow">About</span> Me
+            </h2>
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/3">
+                    <div class="hexagon w-64 h-64 mx-auto overflow-hidden">
+                        <div class="w-full h-full bg-dark flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="md:w-1/2 animate-in show" data-delay="200">
-                    <div class="cyber-card p-6">
-                        <h3 class="text-xl font-bold mb-4 text-[#00ff8c]">My Expertise</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <span class="text-[#00ff8c] mr-2">▹</span>
-                                <span>Vulnerability Assessment &amp; Penetration Testing</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#00ff8c] mr-2">▹</span>
-                                <span>Bug Bounty Hunting</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#00ff8c] mr-2">▹</span>
-                                <span>Web Application Testing</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#00ff8c] mr-2">▹</span>
-                                <span>Network Security Architecture</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#00ff8c] mr-2">▹</span>
-                                <span>Security Awareness Training</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#00ff8c] mr-2">▹</span>
-                                <span>Security Incident Response</span>
-                            </li>
-                        </ul>
+                <div class="md:w-2/3">
+                    <p class="text-lg mb-6">
+                        I am Aathithya Shanmuga Sundaram, a passionate cybersecurity professional dedicated to identifying and mitigating digital threats. With expertise in vulnerability assessment, penetration testing, and security analysis, I work to protect organizations from evolving cyber risks.
+                    </p>
+                    <p class="text-lg mb-6">
+                        My approach combines technical expertise with clear communication, translating complex security concepts into actionable insights. I believe in proactive security measures and responsible disclosure practices to create safer digital environments.
+                    </p>
+                    <p class="text-lg mb-8">
+                        Currently pursuing my B.Sc in Computer Science with Cyber Security, I continuously expand my knowledge through research, hands-on projects, and community engagement. I'm particularly interested in web application security and OSINT techniques.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-darker px-4 py-2 rounded-md border border-primary/30 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                            Security Researcher
+                        </div>
+                        <div class="bg-darker px-4 py-2 rounded-md border border-primary/30 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                            Penetration Tester
+                        </div>
+                        <div class="bg-darker px-4 py-2 rounded-md border border-primary/30 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                            </svg>
+                            Web Security Specialist
+                        </div>
                     </div>
                 </div>
             </div>
@@ -513,341 +251,531 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20">
+    <section id="skills" class="py-20 bg-darker">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold section-heading">Skills &amp; Expertise</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-                <div class="animate-in show" data-delay="100">
-                    <h3 class="text-xl font-bold mb-6 text-[#00ff8c]">Technical Skills</h3>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Security Report Writing</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="95%" style="width: 95%;"></div>
-                            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Technical <span class="text-primary glow">Skills</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="terminal p-6">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Web Application Security</h3>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>OWASP Top 10</span>
+                            <span>90%</span>
                         </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Penetration Testing</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90%" style="width: 90%;"></div>
-                            </div>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 90%"></div>
                         </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Incident Response</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85%" style="width: 85%;"></div>
-                            </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>XSS &amp; CSRF</span>
+                            <span>85%</span>
                         </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Reconnaissance (OSINT, Passive)</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90%" style="width: 90%;"></div>
-                            </div>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 85%"></div>
                         </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Web Application Security</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85%" style="width: 85%;"></div>
-                            </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>SQL Injection</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 80%"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="animate-in show" data-delay="300">
-                    <h3 class="text-xl font-bold mb-6 text-[#00ff8c]">Tools &amp; Technologies</h3>
-                    
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
-                            <div class="hexagon mb-3">
-                                <i class="fas fa-shield-alt text-2xl text-[#00ff8c]"></i>
-                            </div>
-                            <span>Wireshark</span>
+                <div class="terminal p-6">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Vulnerability &amp; Penetration Testing</h3>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Vulnerability Scanning</span>
+                            <span>85%</span>
                         </div>
-                        
-                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
-                            <div class="hexagon mb-3">
-                                <i class="fas fa-bug text-2xl text-[#00ff8c]"></i>
-                            </div>
-                            <span>Metasploit</span>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 85%"></div>
                         </div>
-                        
-                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
-                            <div class="hexagon mb-3">
-                                <i class="fas fa-lock text-2xl text-[#00ff8c]"></i>
-                            </div>
-                            <span>Nmap</span>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Network Penetration</span>
+                            <span>75%</span>
                         </div>
-                        
-                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
-                            <div class="hexagon mb-3">
-                                <i class="fas fa-code text-2xl text-[#00ff8c]"></i>
-                            </div>
-                            <span>Nikto</span>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 75%"></div>
                         </div>
-                        
-                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
-                            <div class="hexagon mb-3">
-                                <i class="fas fa-server text-2xl text-[#00ff8c]"></i>
-                            </div>
-                            <span>Manual Reconnaissance</span>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Exploitation Techniques</span>
+                            <span>80%</span>
                         </div>
-                        
-                        <div class="cyber-card p-4 flex flex-col items-center justify-center text-center">
-                            <div class="hexagon mb-3">
-                                <i class="fas fa-cloud text-2xl text-[#00ff8c]"></i>
-                            </div>
-                            <span>HTTP Headers Scan</span>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 80%"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="mt-16 animate-in show" data-delay="500">
-                <h3 class="text-xl font-bold mb-6 text-[#00ff8c]">Sessions & Seminars</h3>
                 
-                <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="100">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="flex space-x-4">
-                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
+                <div class="terminal p-6">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Security Report Writing</h3>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Technical Documentation</span>
+                            <span>90%</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-2 project-title">Understanding Cyber Threats</h3>
-                        <p class="text-gray-400 mb-4">
-                            Location: Sri Ramakrishna College of Arts & Science
-                        </p>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Risk Assessment</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Remediation Planning</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
                     </div>
                 </div>
-                    
-                    <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="100">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="flex space-x-4">
-                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
+                
+                <div class="terminal p-6">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Reconnaissance (OSINT, Passive)</h3>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>OSINT Techniques</span>
+                            <span>95%</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-2 project-title">Why Online Privacy is a Myth?</h3>
-                        <p class="text-gray-400 mb-4">
-                            Location: Sri Ramakrishna College of Arts & Science
-                        </p>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Passive Reconnaissance</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Information Gathering</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 85%"></div>
+                        </div>
                     </div>
                 </div>
-                    
-                    <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="100">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="flex space-x-4">
-                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
+                
+                <div class="terminal p-6 md:col-span-2">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Incident Response</h3>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Incident Detection</span>
+                            <span>80%</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-2 project-title">Introduction & Importance of Cybersecurity</h3>
-                        <p class="text-gray-400 mb-4">
-                            Location: Sri Ramakrishna College of Arts & Science
-                        </p>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 80%"></div>
+                        </div>
                     </div>
-                </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Containment Strategies</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span>Recovery Planning</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="w-full bg-dark/50 rounded-full h-2">
+                            <div class="skill-bar" style="width: 70%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-[#020c1b]">
+    <section id="projects" class="py-20 bg-dark">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold section-heading">Responsible Disclosures</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-                <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="100">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Notable <span class="text-primary glow">Projects</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="terminal project-card transition-all duration-300">
                     <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <i class="fas fa-folder-open text-[#00ff8c] text-3xl"></i>
-                            </div>
-                            <div class="flex space-x-4">
-                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
+                        <div class="flex items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                            <h3 class="text-xl font-bold">TorsHammer</h3>
                         </div>
-                        <h3 class="text-xl font-bold mb-2 project-title">Public Exposure of Personally Identifiable Information</h3>
-                        <p class="text-gray-400 mb-4">
-                            Identified sensitive endpoint exposure risking Faculty & Student data.
-                        </p>
-                        <div class="flex flex-wrap gap-2 text-xs">
-                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Web Application Testing</span>
-                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Nmap</span>
-                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Network Security</span>
+                        <p class="mb-4">Open Source Contribution to a Denial of Service testing tool designed to help security professionals evaluate system resilience against DoS attacks.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Network Security</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Open Source</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="https://github.com/Aathithya-Shanmuga-Sundaram/torshammer" class="text-primary hover:text-secondary transition-colors flex items-center">
+                                <span>View Project</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="text-primary hover:text-secondary transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="300">
+                <div class="terminal project-card transition-all duration-300">
                     <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <i class="fas fa-folder-open text-[#00ff8c] text-3xl"></i>
+                        <div class="flex items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path>
+                            </svg>
+                            <h3 class="text-xl font-bold">Passwordless Authentication</h3>
+                        </div>
+                        <p class="mb-4">Developed a secure authentication system that uses device fingerprinting instead of traditional passwords, enhancing security while improving user experience.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Authentication</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Security</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="https://github.com/Aathithya-Shanmuga-Sundaram/Passwordless_Authentication" class="text-primary hover:text-secondary transition-colors flex items-center">
+                                <span>View Project</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="text-primary hover:text-secondary transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsible Disclosures Section -->
+    <section id="disclosures" class="py-20 bg-darker">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Responsible <span class="text-primary glow">Disclosures</span>
+            </h2>
+            <div class="grid grid-cols-1 gap-8">
+                <div class="terminal disclosure-card transition-all duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
                             </div>
-                            <div class="flex space-x-4">
-                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+                            <div>
+                                <h3 class="text-xl font-bold">Public Exposure of Personally Identifiable Information</h3>
+                                <p class="text-light/70 text-sm">Educational Institution</p>
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2 project-title">Private WordPress Site RCE</h3>
-                        <p class="text-gray-400 mb-4">
-                            Discovered high severity RCE vulnerability via outdated plugin.
-                        </p>
-                        <div class="flex flex-wrap gap-2 text-xs">
-                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">cURL</span>
-                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Nikto</span>
-                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">WPScan</span>
+                        <p class="mb-4">Identified sensitive endpoint exposure risking Faculty &amp; Student data. The vulnerability allowed unauthorized access to personal information through an improperly secured API endpoint.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-red-900/30 text-red-400 text-xs px-2 py-1 rounded">High Severity</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Data Privacy</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">API Security</span>
+                        </div>
+                        <div class="bg-darker/50 p-4 rounded-md border border-primary/20">
+                            <h4 class="font-bold text-primary mb-2">Resolution</h4>
+                            <p class="text-sm">Worked with the institution's IT team to implement proper authentication controls and data access restrictions. The vulnerability was patched within 48 hours of disclosure.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="project-card bg-[#0a192f] rounded-lg overflow-hidden animate-in show" data-delay="500">
+                <div class="terminal disclosure-card transition-all duration-300">
                     <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <i class="fas fa-folder-open text-[#00ff8c] text-3xl"></i>
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
                             </div>
-                            <div class="flex space-x-4">
-                                </a>
-                                <a href="#" class="text-gray-400 hover:text-[#00ff8c]">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+                            <div>
+                                <h3 class="text-xl font-bold">Private WordPress Site RCE</h3>
+                                <p class="text-light/70 text-sm">Educational Institution</p>
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-2 project-title">SQL Injection in Feedback System of Educational Institution</h3>
-                        <p class="text-gray-400 mb-4">
-                            Found missing security headers increasing injection risk.
-                        </p>
-                        <div class="flex flex-wrap gap-2 text-xs">
-                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">SQLMap</span>
-                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Nmap</span>
-                            <span class="bg-[#112240] text-[#64ffda] px-3 py-1 rounded-full">Input Manipulation</span>
+                        <p class="mb-4">Discovered high severity Remote Code Execution vulnerability via outdated plugin in the institution's WordPress site, which could allow attackers to execute arbitrary code on the server.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-red-900/30 text-red-400 text-xs px-2 py-1 rounded">Critical Severity</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">RCE</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">WordPress</span>
+                        </div>
+                        <div class="bg-darker/50 p-4 rounded-md border border-primary/20">
+                            <h4 class="font-bold text-primary mb-2">Resolution</h4>
+                            <p class="text-sm">Provided detailed documentation on the vulnerability and assisted in updating the plugin. Also recommended implementing a regular security update schedule and plugin audit process.</p>
                         </div>
                     </div>
                 </div>
+                
+                <div class="terminal disclosure-card transition-all duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">SQL Injection in Feedback System</h3>
+                                <p class="text-light/70 text-sm">Educational Institution</p>
+                            </div>
+                        </div>
+                        <p class="mb-4">Found missing security headers and input validation in the institution's feedback system, increasing the risk of SQL injection attacks that could compromise the database.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-900/30 text-yellow-400 text-xs px-2 py-1 rounded">Medium Severity</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">SQL Injection</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Input Validation</span>
+                        </div>
+                        <div class="bg-darker/50 p-4 rounded-md border border-primary/20">
+                            <h4 class="font-bold text-primary mb-2">Resolution</h4>
+                            <p class="text-sm">Developed and provided a security patch that implemented proper input validation, parameterized queries, and appropriate security headers to prevent SQL injection attacks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sessions & Seminars Section -->
+    <section id="sessions" class="py-20 bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Sessions &amp; <span class="text-primary glow">Seminars</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="terminal transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-dark/90 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Understanding Cyber Threats</h3>
+                        <p class="text-light/70 mb-4">Sri Ramakrishna College of Arts &amp; Science</p>
+                        <p class="mb-4">An interactive session exploring common cyber threats, attack vectors, and practical defense strategies for everyday users.</p>
+                        <div class="flex items-center text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>November 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="terminal transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-dark/90 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Why Online Privacy is a Myth?</h3>
+                        <p class="text-light/70 mb-4">Sri Ramakrishna College of Arts &amp; Science</p>
+                        <p class="mb-4">A thought-provoking seminar on digital privacy, data collection practices, and techniques to enhance personal privacy online.</p>
+                        <div class="flex items-center text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>August 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="terminal transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-dark/90 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Introduction &amp; Importance of Cyber Security</h3>
+                        <p class="text-light/70 mb-4">Sri Ramakrishna College of Arts &amp; Science</p>
+                        <p class="mb-4">A foundational seminar covering cybersecurity basics, its growing importance, and career opportunities in the field.</p>
+                        <div class="flex items-center text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>August 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="py-20">
+    <section id="education" class="py-20 bg-darker">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold section-heading">Education</h2>
-            
-            <div class="education-timeline mt-16 relative">
-                <div class="timeline-item mb-16 animate-in show" data-delay="100">
-                    <div class="timeline-content timeline-left">
-                        <div class="institute-logo">
-                            <img src="srcas.png" alt="SRCAS Logo" class="institute-logo"/>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-primary glow">Education</span> &amp; Qualifications
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="terminal p-6">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-dark rounded-full flex items-center justify-center mr-4 border border-primary/30">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
+                            </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-[#00ff8c]">Bachelor of Science in CS with Cybersecurity</h3>
-                        <p class="text-gray-400 mb-2">Sri Ramakrishna College of Arts & Science</p>
-                        <p class="text-sm mb-4">2023 - 2026</p>
+                        <div>
+                            <h3 class="text-xl font-bold">Sri Ramakrishna College of Arts &amp; Science</h3>
+                            <p class="text-primary">B.Sc CS with Cyber Security</p>
+                            <p class="text-light/70">2023 - Present</p>
+                        </div>
+                    </div>
+                    <div class="pl-20">
+                        <p class="mb-4">Pursuing specialized education in computer science with a focus on cybersecurity principles, techniques, and applications.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Operating Systems</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Network Security</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Ethical Hacking</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="timeline-item mb-16 animate-in show" data-delay="300">
-                    <div class="timeline-content timeline-right">
-                        <div class="institute-logo">
-                            <img src="MLM.png" alt="MLM Logo" class="institute-logo"/>
+                <div class="terminal p-6">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-dark rounded-full flex items-center justify-center mr-4 border border-primary/30">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-[#00ff8c]">Higher Secondary Education</h3>
-                        <p class="text-gray-400 mb-2">MotherLaand Matriculation Higher Secondary School</p>
-                        <p class="text-sm mb-4">2022 - 2023</p>
+                        <div>
+                            <h3 class="text-xl font-bold">Motherland Matriculation Higher Secondary School</h3>
+                            <p class="text-primary">Higher Secondary Education</p>
+                            <p class="text-light/70">2022 - 2023</p>
+                        </div>
                     </div>
-                </div>  
+                    <div class="pl-20">
+                        <p class="mb-4">Completed higher secondary education with a focus on computer science and mathematics, laying the foundation for advanced studies in cybersecurity.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Computer Science</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Mathematics</span>
+                            <span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded">Physics</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-[#020c1b]">
+    <section id="contact" class="py-20 bg-dark">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold section-heading">Get In Touch</h2>
-            
-            <div class="flex flex-col md:flex-row gap-12 mt-12">
-                <div class="md:w-1/2 animate-in" data-delay="100">
-                    <p class="text-gray-300 mb-6">
-                        I'm currently open to new opportunities and collaborations in the cybersecurity field. 
-                        Whether you have a question, project idea, or just want to connect, feel free to reach out!
-                    </p>
-                    
-                    <div class="cyber-card p-6 mb-6">
-                        <h3 class="text-xl font-bold mb-4 text-[#00ff8c]">Contact Information</h3>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <i class="fas fa-envelope text-[#00ff8c] mr-4"></i>
-                                <span>aathithyaacharya@outlook.com</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Get In <span class="text-primary glow">Touch</span>
+            </h2>
+            <div class="terminal max-w-3xl mx-auto">
+                <div class="terminal-header flex items-center p-3">
+                    <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div class="ml-4 text-xs text-light/70 font-mono">aathithya@cybersecurity.pro</div>
+                </div>
+                <div class="p-6 md:p-10">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
                             </div>
-                            
-                            <div class="flex items-center">
-                                <i class="fas fa-map-marker-alt text-[#00ff8c] mr-4"></i>
-                                <span>Coimbatore, Tamil Nadu</span>
+                            <h3 class="text-lg font-bold mb-2">Email</h3>
+                            <a href="mailto:aathithyaacharya@outlook.com" class="text-primary hover:text-secondary transition-colors">contact@example.com</a>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                                </svg>
                             </div>
+                            <h3 class="text-lg font-bold mb-2">GitHub</h3>
+                            <a href="https://github.com/Aathithya-Shanmuga-Sundaram" target="_blank" class="text-primary hover:text-secondary transition-colors">github.com/username</a>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">LinkedIn</h3>
+                            <a href="https://linkedin.com/in/username" target="_blank" class="text-primary hover:text-secondary transition-colors">linkedin.com/in/aathithya-shanmuga-sundaram</a>
                         </div>
                     </div>
                     
-                    <div class="flex space-x-6">
-                        <a href="https://linkedin.com/in/aathithya-shanmuga-sundaram" class="text-gray-400 hover:text-[#00ff8c] text-2xl">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/Aathithya-Shanmuga-Sundaram" class="text-gray-400 hover:text-[#00ff8c] text-2xl">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2 animate-in" data-delay="300">
-                    <div class="cyber-card p-6">
-                        <h3 class="text-xl font-bold mb-4 text-[#00ff8c]">Send Me a Message</h3>
-                        
-                        <form id="contact-form" class="space-y-4">
-                            <div>
-                                <label for="name" class="block mb-2 text-sm">Name</label>
-                                <input type="text" id="name" class="w-full bg-[#112240] border border-[#233554] rounded-md p-3 text-white focus:outline-none focus:border-[#00ff8c]" required="">
+                    <div class="bg-darker/50 p-6 rounded-md border border-primary/20">
+                        <h3 class="text-xl font-bold mb-6 text-center">Send a Message</h3>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                                    <input type="text" id="name" name="name" class="w-full bg-dark border border-primary/30 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50" required="">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                                    <input type="email" id="email" name="email" class="w-full bg-dark border border-primary/30 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50" required="">
+                                </div>
                             </div>
-                            
                             <div>
-                                <label for="email" class="block mb-2 text-sm">Email</label>
-                                <input type="email" id="email" class="w-full bg-[#112240] border border-[#233554] rounded-md p-3 text-white focus:outline-none focus:border-[#00ff8c]" required="">
+                                <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject" class="w-full bg-dark border border-primary/30 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50" required="">
                             </div>
-                            
                             <div>
-                                <label for="subject" class="block mb-2 text-sm">Subject</label>
-                                <input type="text" id="subject" class="w-full bg-[#112240] border border-[#233554] rounded-md p-3 text-white focus:outline-none focus:border-[#00ff8c]" required="">
+                                <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full bg-dark border border-primary/30 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50" required=""></textarea>
                             </div>
-                            
-                            <div>
-                                <label for="message" class="block mb-2 text-sm">Message</label>
-                                <textarea id="message" rows="5" class="w-full bg-[#112240] border border-[#233554] rounded-md p-3 text-white focus:outline-none focus:border-[#00ff8c]" required=""></textarea>
+                            <div class="text-center">
+                                <button type="submit" class="bg-primary hover:bg-primary/80 text-dark font-bold py-3 px-8 rounded-md transition-all">
+                                    Send Message
+                                </button>
                             </div>
-                            
-                            <button type="submit" class="btn-cyber w-full">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -856,23 +784,33 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-[#0a192f] border-t border-[#233554]">
+    <footer class="bg-darker py-10 border-t border-primary/20">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <a href="#home" class="text-2xl font-bold code-font text-[#00ff8c]">
-                        <span class="text-[#e6f1ff]">&lt;</span>AS<span class="text-[#e6f1ff]">/&gt;</span>
+                <div class="flex items-center mb-6 md:mb-0">
+                    <div class="hexagon w-10 h-10 mr-3"></div>
+                    <span class="text-xl font-bold text-primary">Aathithya Shanmuga Sundaram</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-light hover:text-primary transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-light hover:text-primary transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-light hover:text-primary transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
                     </a>
                 </div>
-                
-                <div class="text-center md:text-right">
-                    <p class="text-gray-400 text-sm">
-                        Designed &amp; Built by Aathithya Shanmuga Sundaram
-                    </p>
-                    <p class="text-gray-500 text-xs mt-1">
-                        © 2025 All Rights Reserved
-                    </p>
-                </div>
+            </div>
+            <div class="mt-8 text-center text-light/60 text-sm">
+                <p>© 2024 Aathithya Shanmuga Sundaram. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -886,7 +824,7 @@
             mobileMenu.classList.toggle('hidden');
         });
         
-        // Smooth scrolling for navigation links
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -908,132 +846,31 @@
             });
         });
         
-        // Typing effect
-        const typingText = document.getElementById('typing-text');
-        const phrases = ['Cybersecurity Awareness Leader', 'Web Application Pen-Tester','Bug Bounty Hunter', 'Security Architect'];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
         
-        function typeEffect() {
-            const currentPhrase = phrases[phraseIndex];
+        window.addEventListener('scroll', () => {
+            let current = '';
             
-            if (isDeleting) {
-                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 50;
-            } else {
-                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 100;
-            }
-            
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isDeleting = true;
-                typingSpeed = 1500; // Pause at end of phrase
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typingSpeed = 500; // Pause before typing next phrase
-            }
-            
-            setTimeout(typeEffect, typingSpeed);
-        }
-        
-        // Start typing effect
-        setTimeout(typeEffect, 1000);
-        
-        // Animate skill bars when in viewport
-        const skillBars = document.querySelectorAll('.skill-progress');
-        
-        function animateSkillBars() {
-            skillBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width;
-            });
-        }
-        
-        // Intersection Observer for animations
-        const animateElements = document.querySelectorAll('.animate-in');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const element = entry.target;
-                    const delay = element.getAttribute('data-delay') || 0;
-                    
-                    setTimeout(() => {
-                        element.classList.add('show');
-                    }, delay);
-                    
-                    observer.unobserve(element);
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
                 }
             });
-        }, { threshold: 0.1 });
-        
-        animateElements.forEach(element => {
-            observer.observe(element);
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
         
-        // Animate skill bars when skills section is in view
-        const skillsSection = document.getElementById('skills');
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkillBars();
-                    skillsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        skillsObserver.observe(skillsSection);
-        
-        // Matrix background effect
-        const canvas = document.querySelector('.matrix-bg canvas');
-        const ctx = canvas.getContext('2d');
-        const matrixBg = document.querySelector('.matrix-bg');
-        
-        matrixBg.appendChild(canvas);
-        
-        function resizeCanvas() {
-            canvas.width = matrixBg.offsetWidth;
-            canvas.height = matrixBg.offsetHeight;
-        }
-        
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        
-        const characters = '01'.split('');
-        const columns = Math.floor(canvas.width / 20);
-        const drops = [];
-        
-        for (let i = 0; i < columns; i++) {
-            drops[i] = Math.floor(Math.random() * -canvas.height);
-        }
-        
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(2, 12, 27, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#00ff8c';
-            ctx.font = '15px monospace';
-            
-            for (let i = 0; i < drops.length; i++) {
-                const text = characters[Math.floor(Math.random() * characters.length)];
-                ctx.fillText(text, i * 20, drops[i] * 20);
-                
-                if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                
-                drops[i]++;
-            }
-        }
-        
-        setInterval(drawMatrix, 33);
-        
-        // Contact form submission
+        // Form submission handling
         const contactForm = document.getElementById('contact-form');
         
         contactForm.addEventListener('submit', function(e) {
@@ -1042,19 +879,35 @@
             // In a real implementation, you would send the form data to a server
             // For this demo, we'll just show a success message
             
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
+            const formData = new FormData(contactForm);
+            const formValues = Object.fromEntries(formData.entries());
             
-            // Clear the form
-            contactForm.reset();
+            // Simple validation
+            if (!formValues.name || !formValues.email || !formValues.subject || !formValues.message) {
+                alert('Please fill in all fields');
+                return;
+            }
             
             // Show success message
-            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.innerHTML = `
+                <div class="text-center py-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2">Message Sent!</h3>
+                    <p class="mb-6">Thank you for reaching out. I'll get back to you soon.</p>
+                    <button type="button" id="reset-form" class="bg-primary hover:bg-primary/80 text-dark font-bold py-2 px-6 rounded-md transition-all">
+                        Send Another Message
+                    </button>
+                </div>
+            `;
+            
+            // Add event listener to reset form button
+            document.getElementById('reset-form').addEventListener('click', () => {
+                window.location.reload();
+            });
         });
     </script>
-</body>
-</html>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'94735fb8974c4934',t:'MTc0ODQ5NDI1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+
+</body></html>
