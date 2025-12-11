@@ -58,7 +58,7 @@
   .btn.secondary{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.06);box-shadow:none; padding:10px 16px;}
   .btn.secondary:hover{border-color: var(--accent); color: var(--accent);}
 
-  /* --- NEW IMPACT METRICS SECTION --- */
+  /* --- IMPACT METRICS SECTION --- */
   .impact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -96,69 +96,13 @@
   }
   .mecs-badge { background: var(--accent); color: #fff; padding: 4px 10px; border-radius: 4px; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: inline-block;}
   
-  /* =========================================
-     UPDATED CAROUSEL STYLES (With Blur & Fixes)
-     ========================================= */
-  .carousel-container { 
-      position: relative; 
-      overflow: hidden; 
-      border-radius: 14px; 
-      border: 1px solid rgba(255,255,255,0.05); 
-      background: #000; 
-      height: 500px; /* Taller for Desktop */
-      margin-top: 20px;
-  }
-  
+  /* Carousel Styles */
+  .carousel-container { position: relative; overflow: hidden; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05); background: #000; height: 500px; margin-top: 20px;}
   .slides-wrapper { display: flex; transition: transform 0.5s ease-in-out; height: 100%; }
-  
-  .slide { 
-      min-width: 100%; 
-      height: 100%; 
-      position: relative; 
-      /* Sets up the background image for the blur effect */
-      background-size: cover;
-      background-position: center;
-  }
-
-  /* This pseudo-element creates the blurred background fill */
-  .slide::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; 
-      width: 100%; height: 100%;
-      background-image: inherit; /* Inherits image from parent */
-      background-size: cover;
-      background-position: center;
-      filter: blur(20px) brightness(0.4); /* The Blur Effect */
-      z-index: 0;
-  }
-
-  .slide img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: contain; /* Ensures whole image is seen */
-      display: block; 
-      opacity: 0.8; 
-      transition: opacity 0.3s;
-      position: relative; 
-      z-index: 1; /* Sits on top of the blur */
-  }
-
+  .slide { min-width: 100%; height: 100%; position: relative; }
+  .slide img { width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0.8; transition: opacity 0.3s;}
   .slide:hover img { opacity: 1; }
-  
-  .slide-caption { 
-      position: absolute; 
-      bottom: 0; 
-      left: 0; 
-      width: 100%; 
-      padding: 20px; 
-      background: linear-gradient(to top, #000, transparent); 
-      font-weight: 700; 
-      font-size: 16px; 
-      color: #fff;
-      z-index: 2; /* Ensures text is always on top */
-  }
-  
+  .slide-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, #000, transparent); font-weight: 700; font-size: 16px; color: #fff;}
   .carousel-nav { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
   .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.1); cursor: pointer; transition: 0.3s; }
   .dot.active { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
@@ -190,7 +134,11 @@
 
   @keyframes blink { 50% { border-color: transparent; } }
 
-  /* Responsive */
+  /* =========================================
+     MOBILE RESPONSIVE STYLES
+     ========================================= */
+  
+  /* Tablet / Small Laptop */
   @media(max-width:900px){
     .hero{grid-template-columns:1fr;gap:40px; text-align: center;}
     .hero-left h1 {font-size: 32px;}
@@ -198,10 +146,41 @@
     .hero-left{order:1}
     .btn-row{justify-content: center;}
     .mecs-card { flex-direction: column; text-align: center; }
+  }
+
+  /* Mobile Phones */
+  @media(max-width: 600px) {
+    /* Layout */
+    .container { padding: 20px 16px; }
+    .section { padding: 50px 0; }
+
+    /* Header */
+    header { flex-direction: column; gap: 12px; padding-bottom: 20px;}
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    nav a { margin-left: 0; font-size: 14px; }
+
+    /* Hero */
+    .hero { padding: 30px 0; gap: 30px; }
+    .hero-left h1 { font-size: 28px; }
+    .btn-row { flex-direction: column; width: 100%; gap: 10px; }
+    .btn { width: 100%; justify-content: center; }
+
+    /* Impact Metrics - make them 2 cols instead of 1 col for better space usage */
+    .impact-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .impact-card { padding: 15px 10px; }
+    .impact-number { font-size: 24px; }
+    .impact-label { font-size: 12px; }
+
+    /* Carousel - Reduce height drastically for mobile */
+    .carousel-container { height: 250px; }
+    .slide img { object-fit: cover; } /* Fill space better on small screens */
+
+    /* Projects */
+    .projects { grid-template-columns: 1fr; } /* Force single column */
     
-    /* MOBILE CAROUSEL FIX */
-    .carousel-container { height: 280px; } /* Smaller height for phones */
-    .slide img { opacity: 1; } /* Keep images bright on mobile */
+    /* Contact */
+    #contact-grid { flex-direction: column; }
+    #contact-grid .card { width: 100%; }
   }
 </style>
 </head>
@@ -221,7 +200,7 @@
 
     <section class="hero">
       <div class="hero-left hidden-anim">
-        <h1>Aathithya S.<br><small style="font-weight:600;color:var(--muted);font-size:16px" id="typewriter-text"></small><span class="typewriter"></span></h1>
+        <h1>Aathithya S<br><small style="font-weight:600;color:var(--muted);font-size:16px" id="typewriter-text"></small><span class="typewriter"></span></h1>
         <p>I build practical security tools, design incident simulations, and teach OSINT. Seeking internships in SOC, Threat Intel, or Security Engineering.</p>
         <div class="btn-row">
           <a class="btn" href="mailto:aathithyaacharya@outlook.com">Contact Me</a>
@@ -250,7 +229,7 @@
       <h2>Projects</h2>
       <div class="filter-container" id="project-filters">
         <button class="filter-btn active" onclick="filterProjects('all')">All</button>
-        <button class="filter-btn" onclick="filterProjects('Threat Intelligence')">Threat Intelligence</button>
+        <button class="filter-btn" onclick="filterProjects('Threat Intelligence')">Threat Intel</button>
         <button class="filter-btn" onclick="filterProjects('Web')">Web</button>
         <button class="filter-btn" onclick="filterProjects('Forensics')">Forensics</button>
       </div>
@@ -290,6 +269,7 @@
      ========================================= */
   const portfolioData = {
     roles: ["Founder of #MECS", "Cybersecurity Student", "Chairman of Cyber Club"],
+    // IMPACT METRICS DATA
     impact: [
         { value: 1000, label: "Students Reached", suffix: "+" },
         { value: 9, label: "Responsible Disclosures", suffix: "" },
@@ -378,7 +358,7 @@
                 ${m.tags.map(t => `<span class="skill" style="background:var(--accent); color:#000;">${t}</span>`).join('')}
             </div>
         </div>
-        <a href="${m.link}" target="_blank" class="btn" style="min-width: 140px; justify-content: center;">Visit Site ↗</a>
+        <a href="${m.link}" target="_blank" class="btn" style="min-width: 140px; justify-content: center; margin-top: 15px;">Visit Site ↗</a>
     </div>
   `;
 
@@ -440,12 +420,8 @@
   const slidesWrapper = document.getElementById('carousel-slides');
   const dotsContainer = document.getElementById('carousel-dots');
   
-  // UPDATED: Now inserts background image into the DIV for the blur effect
   slidesWrapper.innerHTML = portfolioData.workshops.map(w => `
-    <div class="slide" style="background-image: url('${w.img}')">
-        <img src="${w.img}" alt="${w.caption}">
-        <div class="slide-caption">${w.caption}</div>
-    </div>
+    <div class="slide"><img src="${w.img}" alt="${w.caption}"><div class="slide-caption">${w.caption}</div></div>
   `).join('');
   
   dotsContainer.innerHTML = portfolioData.workshops.map((_, i) => `
