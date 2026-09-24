@@ -790,6 +790,12 @@
           <!-- PROJECTS / SYSTEMS -->
           <section id="projects" class="section anim-hidden">
             <h2>Projects</h2>
+            <div class="filter-row" id="project-filters">
+              <button class="sk-filter active" onclick="filterProjects('all')">All Modules</button>
+              <button class="sk-filter" onclick="filterProjects('Threat Intelligence')">Threat Intelligence</button>
+              <button class="sk-filter" onclick="filterProjects('Web')">Web Applications</button>
+              <button class="sk-filter" onclick="filterProjects('Forensics')">Forensics &amp; DFIR</button>
+            </div>
             <div class="projects-grid" id="projects-grid"></div>
           </section>
 
